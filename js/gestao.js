@@ -42,11 +42,13 @@ function atualizarPainel(convidados) {
     tipos[tipo] = (tipos[tipo] || 0) + 1;
   });
 
-  // Cria os círculos por tipo
-  tiposContainer.innerHTML = "";
-  Object.entries(tipos).forEach(([tipo, qtd]) => {
-    const porcentagem = (qtd / total) * 100;
-    const cor = gerarCorPorTipo(tipo);
+  // Cria os círculos por tipo (ordenados alfabeticamente)
+    tiposContainer.innerHTML = "";
+    Object.entries(tipos)
+    .sort(([a], [b]) => a.localeCompare(b, 'pt-BR'))
+    .forEach(([tipo, qtd]) => {
+        const porcentagem = (qtd / total) * 100;
+        const cor = gerarCorPorTipo(tipo);
 
     const tipoDiv = document.createElement("div");
     tipoDiv.className = "circle-card flex flex-col items-center m-4";
