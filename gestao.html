@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lista de convidados</title>
+  <title>Gestão de Convidados</title>
   <link rel="stylesheet" href="css/lista-convidado.css" />
+  <link rel="stylesheet" href="css/gestao.css" />
   <link rel="icon" href="img/swingsamba.icon.webp" type="image/x-icon" />
 </head>
 <body>
@@ -28,31 +29,45 @@
   </header>
   
   <div class="container">
-    <h1>Lista de Convidados</h1>
+    <h1>Painel de Gestão</h1>
 
-    <div class="search-section">
-      <input type="text" id="pesquisaInput" placeholder="🔍 Pesquisar nome..." oninput="filtrarConvidados()" />
-    </div>
+    <section class="total-section">
+      <h2>Total de Pessoas Presentes</h2>
+      <div class="circle-card">
+        <div class="circle total">
+          <span id="totalPercent">100%</span>
+        </div>
+        <p id="totalPessoas">0 pessoas</p>
+      </div>
+    </section>
 
-    <div class="input-section">
-      <input type="text" id="tipoInput" placeholder="Qual tipo de venda?" />
-      <input type="text" id="nomeInput" placeholder="Digite o nome do convidado" />
-      <input type="text" id="documentoInput" placeholder="Digite o CPF ou RG" />
-      <button onclick="adicionarConvidado()">Adicionar</button>
-    </div>
-
-    <ul id="listaConvidados"></ul>
+    <section class="tipos-section">
+      <h2>Ingressos por Tipo</h2>
+      <div id="tiposContainer" class="tipos-grid"></div>
+    </section>
   </div>
 
-
-   <!-- Firebase SDK compatível -->
+  <!-- Firebase SDK compatível -->
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
 
   <!-- Configuração Firebase -->
   <script src="js/lista-firebase.js"></script>
 
-  <!-- Seu código principal -->
-  <script src="js/lista-convidado.js"></script>
+  <!-- Script principal -->
+  <script src="js/gestao.js"></script>
+
+  <!-- Script do menu -->
+  <script>
+    window.onload = function() {
+      const menuBtn = document.getElementById('menu-btn');
+      const menu = document.getElementById('menu');
+      if (menuBtn && menu) {
+        menuBtn.addEventListener('click', () => {
+          menu.classList.toggle('hidden');
+        });
+      }
+    };
+  </script>
 </body>
 </html>

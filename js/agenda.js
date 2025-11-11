@@ -83,18 +83,23 @@ function renderizarCompromissos() {
       spanCidade.innerText = dados.cidade;
       li.appendChild(spanCidade);
       // Botões em linhas separadas
+      // Só mostra os botões se estiver na agenda.html
+    if (window.location.pathname.includes("agenda.html")) {
       const btnEditar = document.createElement("button");
       btnEditar.innerText = "Editar";
       btnEditar.className = "editar";
       btnEditar.onclick = () => editarCompromisso(dados.id, dados);
       li.appendChild(btnEditar);
+
       const btnExcluir = document.createElement("button");
       btnExcluir.innerText = "Excluir";
       btnExcluir.className = "excluir";
       btnExcluir.onclick = () => removerCompromisso(dados.id);
       li.appendChild(btnExcluir);
-      lista.appendChild(li);
-    });
-  });
-}
+    }
+
+          lista.appendChild(li);
+        });
+      });
+    }
 

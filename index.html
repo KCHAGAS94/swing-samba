@@ -2,39 +2,68 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Painel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nome do Cantor</title>
   <link rel="stylesheet" href="css/index.css" />
-  <link rel="icon" href="img/swingsamba.icon.webp" type="image/x-icon" />
+  <link rel="icon" href="img/banner.jpg" />
 </head>
 <body>
 
   <header>
-    <div class="logo">
-      <a href="painel.html">
-      <img src="img/logo-swingsamba1.jpg" alt="Logo do Evento"/>
-      </a>
-    </div>
-
-    <!-- Botão de menu hamburguer -->
-    <button id="menu-btn" class="menu-btn" aria-label="Abrir menu">☰</button>
-
-    <!-- Menu de navegação -->
-    <nav id="menu" class="menu hidden">
-      <a href="painel.html">Início</a>
-      <a href="agenda.html">Agenda</a>
-      <a href="lista-convidados.html">Lista de Convidados</a>
+    <div class="logo">CANTOR</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#agenda">Agenda</a>
+      <a href="#musicas">Músicas</a>
+      <a href="#videos">Vídeos</a>
     </nav>
   </header>
 
-  <main class="container">
-    <h1>Bem-vindo</h1>
-    <p>Escolha uma das opções abaixo:</p>
+  <section class="hero" id="home">
+    <h1>OUÇA AGORA</h1>
+    <a class="btn" href="https://youtube.com/@Thiaguinho" target="_blank" rel="noopener noreferrer">YouTube Oficial</a>
+  </section>
 
-    <a href="agenda.html" class="btn">📅 Acessar Agenda</a>
-    <a href="lista-convidados.html" class="btn">📝 Lista de Convidados</a>
-  </main>
+ <section class="agenda" id="agenda">
+  <h2>Agenda de Shows</h2>
+  <div class="grade-agenda" id="listaCompromissos">
+    <p>Carregando agenda...</p>
+  </div>
+</section>
 
+
+
+
+  <section class="musicas" id="musicas">
+    <h2>Ouça nas plataformas</h2>
+    <a class="btn" href="https://open.spotify.com/artist/1PbBg2aYwXzHph4n0TO2iY" target="_blank" rel="noopener noreferrer">Spotify</a>
+    <a class="btn" href="https://deezer.com" target="_blank" rel="noopener noreferrer">Deezer</a>
+  </section>
+
+    <section class="videos" id="videos">
+      <h2>Vídeos</h2>
+      <div id="videos-container">
+        <p>Carregando vídeos...</p>
+      </div>
+    </section>
+
+
+  <footer>
+    <p>© 2025 Nome do Cantor - Todos os direitos reservados</p>
+  </footer>
+
+  <!-- Firebase -->
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+
+  <!-- Inicializa o Firebase -->
+  <script src="js/agenda-firebase.js"></script>
+
+  <!-- Scripts do projeto -->
+  <script src="js/agenda.js"></script>
+  <script src="js/videos.js"></script>
   <script src="js/index.js"></script>
+
 </body>
 </html>

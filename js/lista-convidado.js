@@ -20,13 +20,15 @@ const database = firebase.database()
 
 function adicionarConvidado() {
   const nomeInput = document.getElementById('nomeInput')
+  const tipoInput = document.getElementById('tipoInput')
   const docInput = document.getElementById('documentoInput')
 
   const nome = nomeInput.value.trim().toUpperCase()
+  const tipo = tipoInput.value.trim().toUpperCase()
   const documento = docInput.value.trim().toUpperCase()
 
-  if (nome === '' || documento === '') {
-    alert('Preencha o nome e o CPF/RG!')
+  if (nome === '' || documento === '' || tipo === '') {
+    alert('Preencha todos os campos antes de adicionar um convidado.')
     return
   }
 
@@ -34,6 +36,7 @@ function adicionarConvidado() {
 
   const novoConvidado = {
     id,
+    tipo,
     nome,
     documento,
     presente: false
@@ -41,6 +44,7 @@ function adicionarConvidado() {
 
   database.ref('convidados/' + id).set(novoConvidado)
 
+  tipoInput.value = ''
   nomeInput.value = ''
   docInput.value = ''
 }
@@ -75,6 +79,7 @@ function atualizarLista(convidados) {
     item.className = convidado.presente ? 'presente' : ''
     item.innerHTML = `
       <span>
+        <small>Tipo: ${convidado.tipo}</small><br />
         <strong>${convidado.nome}</strong><br />
         <small>${convidado.documento}</small>
       </span>
