@@ -32,13 +32,20 @@
     <h1>Painel de Gestão</h1>
 
     <section class="total-section">
-      <h2>Total de Pessoas Presentes</h2>
-      <div class="circle-card">
-        <div class="circle total">
-          <span id="totalPercent">100%</span>
+      <div class="circle-card flex flex-col items-center">
+        <div class="relative w-40 h-40 flex items-center justify-center">
+            <svg class="absolute top-0 left-0" width="160" height="160">
+            <circle cx="80" cy="80" r="70" stroke="#e5e7eb" stroke-width="15" fill="none" />
+            <circle id="circleTotal" cx="80" cy="80" r="70" stroke="#3b82f6" stroke-width="15" fill="none"
+                stroke-linecap="round" stroke-dasharray="440" stroke-dashoffset="440" />
+            </svg>
+            <div class="text-center">
+            <p id="totalPercent" class="text-2xl font-bold text-blue-600">0%</p>
+            <p id="totalPessoas" class="text-sm text-gray-600 mt-1">0 pessoas</p>
+            </div>
         </div>
-        <p id="totalPessoas">0 pessoas</p>
-      </div>
+        </div>
+
     </section>
 
     <section class="tipos-section">

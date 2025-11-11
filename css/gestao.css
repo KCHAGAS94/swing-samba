@@ -117,3 +117,19 @@ h3 {
   margin-bottom: 5px;
   color: #333;
 }
+
+#circleTotal {
+  transition: stroke-dashoffset 0.8s ease;
+}
+
+.tipos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.circle-card {
+  text-align: center;
+}
+
