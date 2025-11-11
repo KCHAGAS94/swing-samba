@@ -1,22 +1,22 @@
-/* ===== Reset básico ===== */
+/* ===== RESET BÁSICO ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ===== Body centralizado ===== */
+/* ===== BODY ===== */
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
   background: linear-gradient(135deg, #f0f4f8, #e3f2fd);
   min-height: 100vh;
-  padding-top: 60px; /* Espaço para o header fixo de 60px. Ajuste para 80px se o header for maior. */
+  padding-top: 60px;
   display: flex;
-  justify-content: center; /* Centraliza horizontalmente */
-  align-items: flex-start;  /* Conteúdo inicia logo abaixo do header */
+  justify-content: center;
+  align-items: flex-start;
 }
 
-/* ===== Header fixo ===== */
+/* ===== HEADER FIXO ===== */
 header {
   background-color: #070707;
   color: white;
@@ -33,19 +33,18 @@ header {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* ===== Logo no header ===== */
+/* ===== LOGO ===== */
 .logo {
   display: flex;
   align-items: center;
-  overflow: hidden;
 }
 .logo img {
-  height: 40px;       /* Cabe dentro dos 60px de header */
+  height: 40px;
   object-fit: contain;
   display: block;
 }
 
-/* ===== Nav no header ===== */
+/* ===== NAV ===== */
 nav {
   display: flex;
   gap: 20px;
@@ -68,132 +67,198 @@ button:active {
   transform: translateY(1px);
 }
 
-/* ===== Container centralizado ===== */
+/* ===== CONTAINER PRINCIPAL ===== */
 .container {
   background-color: white;
   padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
   width: 100%;
-  margin-top: 20px; /* Afastamento do header */
+  margin-top: 20px;
+  transition: all 0.3s ease;
 }
 
-/* ===== Título ===== */
+/* ===== TÍTULO ===== */
 h1 {
   text-align: center;
   color: #2c3e50;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  font-weight: 700;
 }
 
-/* ===== Seção de busca ===== */
+/* ===== SEÇÃO DE BUSCA ===== */
 .search-section {
   margin-bottom: 20px;
   text-align: center;
 }
 .search-section input {
-  padding: 10px;
+  padding: 10px 14px;
   width: 100%;
   max-width: 300px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  border-radius: 8px;
+  border: 1.5px solid #ccc;
+  font-size: 15px;
+  transition: 0.3s;
+}
+.search-section input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 6px rgba(52, 152, 219, 0.3);
 }
 
-/* ===== Seção de inputs ===== */
+/* ===== SEÇÃO DE INPUTS ===== */
 .input-section {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   text-align: center;
 }
-.input-section input {
-  padding: 10px;
-  width: 100%;
-  max-width: 200px;
-  margin: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+
+/* ===== CAMPOS ESTILIZADOS ===== */
+label {
+  display: block;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 6px;
+  text-align: left;
 }
+
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  max-width: 350px;
+  padding: 10px 14px;
+  margin-bottom: 15px;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.2s ease;
+  outline: none;
+  background-color: #fafafa;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 6px rgba(52, 152, 219, 0.3);
+  background-color: #fff;
+}
+
+/* ===== CAMPOS EM LINHA ===== */
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+.form-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* ===== INPUTS ESPECÍFICOS ===== */
+#nomeInput,
+#documentoInput {
+  text-transform: uppercase;
+}
+
+/* ===== BOTÃO ADICIONAR ===== */
 .input-section button {
-  padding: 10px 15px;
+  padding: 12px 18px;
   cursor: pointer;
   border: none;
-  border-radius: 5px;
-  margin-left: 5px;
+  border-radius: 8px;
+  margin-top: 10px;
   background-color: #3498db;
   color: white;
-  transition: background-color 0.3s ease;
+  font-weight: 600;
+  font-size: 15px;
+  transition: background-color 0.3s ease, transform 0.1s ease;
 }
 .input-section button:hover {
   background-color: #2980b9;
+  transform: translateY(-2px);
 }
 
-/* ===== Lista de convidados ===== */
+/* ===== LISTA DE CONVIDADOS ===== */
 #listaConvidados {
   list-style: none;
   padding: 0;
   margin-top: 20px;
 }
 #listaConvidados li {
-  background-color: #f0f0f0;
-  margin-bottom: 10px;
-  padding: 15px;
-  border-radius: 5px;
+  background-color: #f8f9fa;
+  margin-bottom: 12px;
+  padding: 15px 18px;
+  border-radius: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  transition: 0.3s;
+}
+#listaConvidados li:hover {
+  background-color: #eef3f7;
 }
 #listaConvidados li span {
-  flex: 1 1 70%;
+  flex: 1 1 65%;
+  font-size: 15px;
+  color: #2c3e50;
 }
 #listaConvidados li div {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
   justify-content: flex-end;
-  flex: 1 1 30%;
+  flex: 1 1 35%;
 }
+
+/* ===== STATUS PRESENTE ===== */
 .presente {
   background-color: #d4fcd4;
   font-weight: bold;
 }
 
-/* ===== Botões de ação ===== */
-#listaConvidados li button.confirmar {
-  background-color: #007bff;
+/* ===== BOTÕES DA LISTA ===== */
+#listaConvidados li button {
+  padding: 8px 14px;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
   color: white;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+#listaConvidados li button:hover {
+  transform: translateY(-2px);
+}
+
+/* Confirmar */
+#listaConvidados li button.confirmar {
+  background-color: #3498db;
 }
 #listaConvidados li button.confirmar:hover {
-  background-color: #006ae6;
+  background-color: #2980b9;
 }
+
+/* Desmarcar */
 #listaConvidados li button.desmarcar {
   background-color: #0b6623;
-  color: white;
 }
 #listaConvidados li button.desmarcar:hover {
   background-color: #08521a;
 }
+
+/* Excluir */
 #listaConvidados li button.excluir {
-  background-color: #d9534f;
-  color: white;
+  background-color: #e74c3c;
 }
 #listaConvidados li button.excluir:hover {
-  background-color: #c9302c;
+  background-color: #c0392b;
 }
 
-/* ===== Inputs gerais ===== */
-input {
-  font-family: inherit;
-  font-size: 16px;
-  /* Se quiser controlar largura em formulários específicos, já está em .input-section */
-}
-
-/* ===== Forçar uppercase em inputs específicos ===== */
-#nomeInput,
-#documentoInput {
-  text-transform: uppercase;
-}
-
-/* Botão hamburger */
+/* ===== MENU MOBILE ===== */
 .menu-btn {
   background: none;
   border: none;
@@ -203,32 +268,51 @@ input {
   display: block;
 }
 
-/* Menu dropdown */
 .menu {
   position: absolute;
   top: 60px;
   right: 20px;
   background-color: #070707;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
+
 .menu.hidden {
   display: none;
 }
+
 .menu a {
   color: white;
   text-decoration: none;
   padding: 12px 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   transition: background-color 0.3s;
 }
+
 .menu a:last-child {
   border-bottom: none;
 }
+
 .menu a:hover,
 .menu a.active {
-  background-color: rgba(255,255,255,0.1);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  input[type="text"],
+  select {
+    max-width: 100%;
+  }
 }
