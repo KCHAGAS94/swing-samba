@@ -1,7 +1,7 @@
 const database = firebase.database();
 
-window.addEventListener('DOMContentLoaded', () => {
-  // Controle do menu
+window.onload = function () {
+  // Controle do menu hamburguer
   const menuBtn = document.getElementById('menu-btn');
   const menu = document.getElementById('menu');
 
@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const convidados = snapshot.val();
     atualizarPainel(convidados);
   });
-});
+};
 
 function atualizarPainel(convidados) {
   const tiposContainer = document.getElementById("tiposContainer");
@@ -32,7 +32,6 @@ function atualizarPainel(convidados) {
   const convidadosArray = Object.values(convidados);
   const total = convidadosArray.length;
 
-  // Atualiza total geral
   totalPessoasEl.textContent = `${total} pessoa${total > 1 ? 's' : ''}`;
   atualizarCirculoTotal(100);
 
@@ -47,7 +46,7 @@ function atualizarPainel(convidados) {
   tiposContainer.innerHTML = "";
   Object.entries(tipos).forEach(([tipo, qtd]) => {
     const porcentagem = (qtd / total) * 100;
-    const cor = gerarCorPorTipo(tipo); // cor personalizada
+    const cor = gerarCorPorTipo(tipo);
 
     const tipoDiv = document.createElement("div");
     tipoDiv.className = "circle-card flex flex-col items-center m-4";
@@ -84,7 +83,7 @@ function atualizarCirculoTotal(percentual) {
   }
 }
 
-// Gera uma cor diferente por tipo
+// Gera cores por tipo
 function gerarCorPorTipo(tipo) {
   const cores = {
     CAMAROTE: "#a855f7",

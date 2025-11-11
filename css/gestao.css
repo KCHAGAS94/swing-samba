@@ -1,135 +1,186 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #f5f5f5;
+/* ===== Reset básico ===== */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
+/* ===== Body centralizado ===== */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #f0f4f8, #e3f2fd);
+  min-height: 100vh;
+  padding-top: 60px; /* Espaço para o header fixo */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* ===== Header fixo ===== */
 header {
-  background: #b30000;
+  background-color: #070707;
   color: white;
-  text-align: center;
-  padding: 20px;
-}
-
-header img {
-  width: 80px;
-  border-radius: 50%;
-}
-
-.container {
-  max-width: 900px;
-  margin: 30px auto;
-  padding: 20px;
-  text-align: center;
-}
-
-h2 {
-  color: #222;
-  margin-bottom: 10px;
-}
-
-.circle-card {
-  display: inline-block;
-  margin: 20px;
-  text-align: center;
-}
-
-.circle {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: white;
-  border: 8px solid #b30000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  padding: 0 20px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 22px;
-  font-weight: bold;
-  color: #b30000;
-  margin: 0 auto;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  justify-content: space-between;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.tipos-grid {
+/* ===== Logo no header ===== */
+.logo {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
+  align-items: center;
+  overflow: hidden;
+}
+.logo img {
+  height: 40px;
+  object-fit: contain;
+  display: block;
 }
 
-h3 {
-  margin-bottom: 5px;
-  color: #444;
+/* ===== Nav no header ===== */
+nav {
+  display: flex;
+  gap: 20px;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+nav a.active {
+  border-bottom: 2px solid #e0f7fa;
+}
+button:active {
+  transform: translateY(1px);
 }
 
+/* ===== Menu hamburguer ===== */
+.menu-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  display: block;
+}
+
+/* ===== Menu dropdown ===== */
+.menu {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: #070707;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.menu.hidden {
+  display: none;
+}
+.menu a {
+  color: white;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s;
+}
+.menu a:last-child {
+  border-bottom: none;
+}
+.menu a:hover,
+.menu a.active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ===== Container ===== */
 .container {
-  max-width: 900px;
-  margin: 30px auto;
-  padding: 20px;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 100%;
+  margin-top: 20px;
   text-align: center;
 }
 
+/* ===== Títulos ===== */
 h1 {
-  margin-bottom: 20px;
-  color: #b30000;
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+h2 {
+  color: #34495e;
+  margin-bottom: 15px;
 }
 
-.total-section, .tipos-section {
-  margin-bottom: 40px;
+/* ===== Seções ===== */
+.total-section,
+.tipos-section {
+  margin-bottom: 30px;
 }
 
+/* ===== Círculo principal ===== */
 .circle-card {
-  display: inline-block;
-  margin: 20px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
 .circle {
-  width: 130px;
-  height: 130px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
-  border: 8px solid #b30000;
+  background: conic-gradient(#3498db 100%, #dcdcdc 0);
   display: flex;
   justify-content: center;
   align-items: center;
-  background: white;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: bold;
-  color: #b30000;
-  margin: 0 auto;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  transition: transform 0.3s ease;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.circle span {
+  color: #fff;
+}
+#totalPessoas {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #2c3e50;
 }
 
-.circle:hover {
-  transform: scale(1.05);
-}
-
+/* ===== Tipos de ingressos ===== */
 .tipos-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
 }
-
-h3 {
-  margin-bottom: 5px;
-  color: #333;
+.tipo-card {
+  background-color: #ecf0f1;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
-
-#circleTotal {
-  transition: stroke-dashoffset 0.8s ease;
+.tipo-card h3 {
+  font-size: 16px;
+  color: #2c3e50;
 }
-
-.tipos-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
+.tipo-card p {
+  font-size: 14px;
+  color: #555;
 }
-
-.circle-card {
-  text-align: center;
-}
-
