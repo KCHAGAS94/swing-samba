@@ -316,3 +316,44 @@ select:focus {
     max-width: 100%;
   }
 }
+
+/* ===== Sugestões para tipoInput ===== */
+.tipo-suggestions {
+  position: relative;
+  max-width: 350px;
+  margin: 6px auto 10px;
+  width: 100%;
+  display: none; /* inicialmente escondido */
+  z-index: 1200;
+}
+
+.tipo-suggestions .list {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  overflow: hidden;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.tipo-suggestions .item {
+  padding: 10px 12px;
+  cursor: pointer;
+  color: #2c3e50;
+  font-weight: 500;
+}
+.tipo-suggestions .item:hover,
+.tipo-suggestions .item.active {
+  background-color: #eef6ff;
+}
+.tipo-suggestions .empty {
+  padding: 10px 12px;
+  color: #777;
+}
+
+/* mobile-friendly */
+@media (max-width: 420px) {
+  .tipo-suggestions { max-width: 100%; margin-left: 0; margin-right: 0; }
+}
+

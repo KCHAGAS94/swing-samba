@@ -35,10 +35,20 @@
     </div>
 
     <div class="input-section">
-      <input type="text" id="tipoInput" placeholder="Qual tipo de venda?" />
+      <!-- <input type="text" id="tipoInput" placeholder="Qual tipo de venda?" />
       <input type="text" id="nomeInput" placeholder="Digite o nome do convidado" />
       <input type="text" id="documentoInput" placeholder="Digite o CPF ou RG" />
-      <button onclick="adicionarConvidado()">Adicionar</button>
+      <button onclick="adicionarConvidado()">Adicionar</button> -->
+      <div class="input-section">
+        <input type="text" id="tipoInput" placeholder="Qual tipo de venda?" autocomplete="off" />
+        <!-- container para sugestões dinâmicas -->
+        <div id="tipoSuggestions" class="tipo-suggestions" aria-hidden="true"></div>
+
+        <input type="text" id="nomeInput" placeholder="Digite o nome do convidado" />
+        <input type="text" id="documentoInput" placeholder="Digite o CPF ou RG" />
+        <button onclick="adicionarConvidado()">Adicionar</button>
+      </div>
+
     </div>
 
     <ul id="listaConvidados"></ul>

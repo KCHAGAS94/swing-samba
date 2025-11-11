@@ -113,3 +113,116 @@ function filtrarConvidados() {
 firebase.database().ref('convidados').on('value', snapshot => {
   atualizarLista(snapshot.val())
 })
+
+// ---------------------------
+// Sugestões dinâmicas para tipoInput (baseado nos tipos salvos no Firebase)
+// ---------------------------
+
+const tiposSetGlobal = new Set(); // armazena tipos únicos
+
+function carregarTiposDeVendaRealtime() {
+  const ref = firebase.database().ref('convidados');
+  ref.on('value', snapshot => {
+    tiposSetGlobal.clear();
+    snapshot.forEach(childSnap => {
+      const convidado = childSnap.val();
+      if (convidado && convidado.tipo && convidado.tipo.toString().trim() !== '') {
+        tiposSetGlobal.add(convidado.tipo.toString().trim());
+      }
+    });
+    renderSuggestions(); // atualiza se já estiver aberto
+  });
+}
+
+// Renderiza a lista de sugestões (todos)
+function renderSuggestions(filter = '') {
+  const container = document.getElementById('tipoSuggestions');
+  if (!container) return;
+
+  const list = Array.from(tiposSetGlobal)
+    .filter(t => t.toLowerCase().includes(filter.toLowerCase()))
+    .sort((a,b) => a.localeCompare(b));
+
+  if (list.length === 0) {
+    container.innerHTML = `<div class="list"><div class="empty">Nenhuma sugestão</div></div>`;
+    container.style.display = 'none';
+    container.setAttribute('aria-hidden', 'true');
+    return;
+  }
+
+  const itemsHtml = list.map(t => `<div class="item" data-tipo="${escapeHtml(t)}">${escapeHtml(t)}</div>`).join('');
+  container.innerHTML = `<div class="list">${itemsHtml}</div>`;
+  container.style.display = 'block';
+  container.setAttribute('aria-hidden', 'false');
+
+  // adiciona eventos de clique em cada item
+  const nodes = container.querySelectorAll('.item');
+  nodes.forEach(node => {
+    node.addEventListener('click', (e) => {
+      const valor = e.currentTarget.getAttribute('data-tipo') || '';
+      const tipoInput = document.getElementById('tipoInput');
+      tipoInput.value = valor;
+      hideSuggestions();
+      tipoInput.focus();
+    });
+  });
+}
+
+function hideSuggestions() {
+  const container = document.getElementById('tipoSuggestions');
+  if (!container) return;
+  container.style.display = 'none';
+  container.setAttribute('aria-hidden', 'true');
+}
+
+// Função utilitária para escapar texto (evita problemas com caracteres)
+function escapeHtml(text) {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+// Filtra sugestões enquanto digita
+function setupTipoInputAutocomplete() {
+  const tipoInput = document.getElementById('tipoInput');
+  const container = document.getElementById('tipoSuggestions');
+  if (!tipoInput || !container) return;
+
+  tipoInput.addEventListener('input', () => {
+    const val = tipoInput.value.trim();
+    if (val === '') {
+      // mostra todas as opções se houver alguma
+      if (tiposSetGlobal.size > 0) renderSuggestions('');
+      else hideSuggestions();
+    } else {
+      renderSuggestions(val);
+    }
+  });
+
+  tipoInput.addEventListener('focus', () => {
+    // ao focar, mostrar todas se estiver vazio
+    if (tipoInput.value.trim() === '') {
+      if (tiposSetGlobal.size > 0) renderSuggestions('');
+    } else {
+      renderSuggestions(tipoInput.value.trim());
+    }
+  });
+
+  // Esconder ao desfocar, com pequena espera para permitir click
+  document.addEventListener('click', (e) => {
+    const within = e.target === container || container.contains(e.target) || e.target === tipoInput;
+    if (!within) hideSuggestions();
+  });
+
+  // tecla ESC fecha
+  tipoInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') hideSuggestions();
+  });
+}
+
+// inicialização: chama ao final do arquivo
+carregarTiposDeVendaRealtime();
+setupTipoInputAutocomplete();
